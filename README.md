@@ -1,8 +1,8 @@
 # C 3D Graphic Engine
 > **C3DGraphicEngine** - это графический 3D движок, написанный с полного нуля на чистом С!
-### [Скачайте](https://github.com/StepanovPlaton/C3DGraphicEngine/raw/refs/heads/main/builds/v0.1.exe) и попробуйте сами!
+### [Скачайте](https://github.com/StepanovPlaton/C3DGraphicEngine/raw/refs/heads/main/builds/v0.11.exe) и попробуйте сами!
 
-![](./screenshots/demo_render.png)
+![](./screenshots/demo_render.gif)
 
 
 ## Стек:
@@ -35,6 +35,7 @@
 
 ## Идеи:
 - [ ] Добавить непрозрачность (скрыть невидимые грани)
+- [ ] Добавить рендер с помощью X11 и сборку под Unix-подобные системы
 - [ ] Добавить алгоритмы создания сложных фигур (додекаэдр, шар и тд.)
 - [ ] Добавить физику
 - [ ] Have fun!

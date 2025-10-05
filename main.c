@@ -18,7 +18,6 @@ int cube_edges[][2] = {{0, 1}, {1, 2}, {2, 3}, {3, 0}, {4, 5}, {5, 6},
                        {6, 7}, {7, 4}, {0, 4}, {1, 5}, {2, 6}, {3, 7}};
 Point3D cube_position = {.coordinates = {3.0f, 6.0f, 5.0f}};
 float cube_speed[] = {0.03f, 0.0f, 0.0f};
-
 const Object cube = {.points = cube_points,
                      .edges = cube_edges,
                      .number_of_points = 8,
@@ -35,7 +34,6 @@ int pyramid_edges[][2] = {{0, 1}, {1, 2}, {2, 3}, {3, 0},
                           {0, 4}, {1, 4}, {2, 4}, {3, 4}};
 Point3D pyramid_position = {.coordinates = {6.0f, 3.0f, 5.0f}};
 float pyramid_speed[] = {0.0f, 0.0f, 0.03f};
-
 const Object pyramid = {.points = pyramid_points,
                         .edges = pyramid_edges,
                         .number_of_points = 5,
@@ -43,8 +41,22 @@ const Object pyramid = {.points = pyramid_points,
                         .position = &pyramid_position,
                         .rotate_speed = &pyramid_speed};
 
-const int number_of_objects = 2;
-Object objects[] = {cube, pyramid};
+Point3D prism_points[] = {{0.0f, 0.0f, 0.0f}, {1.0f, 0.0f, 0.0f},
+                          {0.5f, 0.0f, 1.0f}, {0.0f, 1.0f, 0.0f},
+                          {1.0f, 1.0f, 0.0f}, {0.5f, 1.0f, 1.0f}};
+int prism_edges[][2] = {{0, 1}, {1, 2}, {2, 0}, {3, 4}, {4, 5},
+                        {5, 3}, {0, 3}, {1, 4}, {2, 5}};
+Point3D prism_position = {.coordinates = {10.0f, 10.0f, 10.0f}};
+float prism_speed[] = {0.0f, 0.03f, 0.0f};
+const Object prism = {.points = prism_points,
+                      .edges = prism_edges,
+                      .number_of_points = 6,
+                      .number_of_edges = 9,
+                      .position = &prism_position,
+                      .rotate_speed = &prism_speed};
+
+const int number_of_objects = 3;
+Object objects[] = {cube, pyramid, prism};
 
 Camera camera = {.position = {0.0f, 0.0f, 0.0f},
                  .target = {1.0f, 1.0f, 1.0f},
