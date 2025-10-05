@@ -1,6 +1,6 @@
 # C 3D Graphic Engine
 > **C3DGraphicEngine** - это графический 3D движок, написанный с полного нуля на чистом С!
-### [Скачайте](./builds/v0.1.exe) и попробуйте сами!
+### [Скачайте](https://github.com/StepanovPlaton/C3DGraphicEngine/raw/refs/heads/main/builds/v0.1.exe) и попробуйте сами!
 
 ![](./screenshots/demo_render.png)
 
