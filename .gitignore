@@ -1,2 +1,5 @@
-main.exe
-*.o
+src/main.exe
+src/main
+*.wo
+*.uo
+*.mo
