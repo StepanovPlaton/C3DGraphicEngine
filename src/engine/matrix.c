@@ -1,6 +1,5 @@
 #include "matrix.h"
-
-#include <math.h>
+#include "../utils/math.h"
 
 void matrix_mult_matrix(int size, const float matrix1[size][size],
                         const float matrix2[size][size],
@@ -36,8 +35,8 @@ void create_axis_rotate_matrix(int axis, float angle,
     }
   }
 
-  float cos_angle = cosf(angle);
-  float sin_angle = sinf(angle);
+  float cos_angle = e_cos(angle);
+  float sin_angle = e_sin(angle);
 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {

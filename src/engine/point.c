@@ -3,6 +3,16 @@
 #include "../utils/screen.h"
 #include "matrix.h"
 
+void point_add_point(Point *const point, const Point *const other_point) {
+  for (int i = 0; i < 3; i++)
+    point->coordinates[i] += other_point->coordinates[i];
+}
+
+void point_mult_number(Point *const point, const int k) {
+  for (int i = 0; i < 3; i++)
+    point->coordinates[i] *= k;
+}
+
 void point_transform(Point *const point, int size,
                      const float translate_matrix[size][size]) {
   float new_coordinates[3];
@@ -25,8 +35,8 @@ void point_create_translate_matrix(const Point *const position,
   }
 }
 
-ScreenPoint point_convert_to_screen_point(Point *point, Screen *screen,
-                                          const float render_matrix[4][4]) {
+ScreenPoint point_to_screen_point(Point *point, Screen *screen,
+                                  const float render_matrix[4][4]) {
   float tmp[] = {point->coordinates[0], point->coordinates[1],
                  point->coordinates[2], 1.0f};
   float point_projection_view[4];

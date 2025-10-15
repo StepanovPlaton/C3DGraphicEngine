@@ -30,12 +30,10 @@ Point object_get_centroid(const Object *const object) {
 void object_draw(const Object *object, Screen *screen,
                  const float render_matrix[4][4]) {
   for (int i = 0; i < object->number_of_edges; i++) {
-    Point point1 = object->points[object->edges[i][0]];
-    ScreenPoint screen_point1 =
-        point_convert_to_screen_point(&point1, screen, render_matrix);
-    Point point2 = object->points[object->edges[i][1]];
-    ScreenPoint screen_point2 =
-        point_convert_to_screen_point(&point2, screen, render_matrix);
+    ScreenPoint screen_point1 = point_to_screen_point(
+        &object->points[object->edges[i][0]], screen, render_matrix);
+    ScreenPoint screen_point2 = point_to_screen_point(
+        &object->points[object->edges[i][1]], screen, render_matrix);
     screen->draw_line(&screen_point1, &screen_point2);
   }
 }

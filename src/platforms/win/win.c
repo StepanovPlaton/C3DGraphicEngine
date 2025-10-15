@@ -6,7 +6,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam,
                             LPARAM lParam) {
   switch (uMsg) {
   case WM_CREATE:
-    SetTimer(hwnd, 1, 50, NULL);
+    SetTimer(hwnd, 1, 1000 / FPS, NULL);
     init_engine();
     return 0;
   case WM_PAINT: {
