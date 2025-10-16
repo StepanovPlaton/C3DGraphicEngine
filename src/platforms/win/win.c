@@ -1,6 +1,8 @@
-#include "platform.h"
+#include "../platform.h"
 
 #include "win.h"
+
+const Color white = {255, 255, 255};
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam,
                             LPARAM lParam) {
@@ -19,20 +21,20 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam,
     float width = rect.right - rect.left;
     float height = rect.bottom - rect.top;
 
-    HPEN hPen = CreatePen(PS_SOLID, 1, COLOR);
-    HPEN hOldPen = (HPEN)SelectObject(hdc, hPen);
-
-    void draw_line(const ScreenPoint *sp1, const ScreenPoint *sp2) {
+    void draw_line(const ScreenPoint *sp1, const ScreenPoint *sp2,
+                   const Color *const color) {
+      HPEN hPen =
+          CreatePen(PS_SOLID, 1, RGB(color->red, color->green, color->blue));
+      HPEN hOldPen = (HPEN)SelectObject(hdc, hPen);
       MoveToEx(hdc, sp1->coordinates[0], sp1->coordinates[1], NULL);
       LineTo(hdc, sp2->coordinates[0], sp2->coordinates[1]);
+      SelectObject(hdc, hOldPen);
+      DeleteObject(hPen);
     };
 
     Screen screen = {.width = width, .height = height, .draw_line = &draw_line};
 
-    render(screen);
-
-    SelectObject(hdc, hOldPen);
-    DeleteObject(hPen);
+    render(&screen, &white);
 
     EndPaint(hwnd, &ps);
     return 0;
@@ -44,7 +46,6 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam,
 
   case WM_TIMER:
     tic();
-
     InvalidateRect(hwnd, NULL, TRUE);
     return 0;
 

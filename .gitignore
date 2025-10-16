@@ -1,5 +1,7 @@
 src/main.exe
 src/main
+src/main.elf
+src/main.hex
 *.wo
 *.uo
 *.mo

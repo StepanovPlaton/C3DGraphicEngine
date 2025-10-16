@@ -14,8 +14,8 @@ void point_mult_number(Point *const point, const int k) {
 }
 
 void point_transform(Point *const point, int size,
-                     const float translate_matrix[size][size]) {
-  float new_coordinates[3];
+                     const float *translate_matrix) {
+  float new_coordinates[size];
   float old_coordinates[] = {point->coordinates[0], point->coordinates[1],
                              point->coordinates[2], 1.0f};
   matrix_mult_vector(size, translate_matrix, old_coordinates, new_coordinates);
@@ -23,20 +23,20 @@ void point_transform(Point *const point, int size,
     point->coordinates[i] = new_coordinates[i];
 }
 void point_create_translate_matrix(const Point *const position,
-                                   float translate_matrix[4][4], int k) {
+                                   float *translate_matrix, int k) {
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
-      translate_matrix[i][j] = 0;
+      translate_matrix[i * 4 + j] = 0;
       if (i == j)
-        translate_matrix[i][j] = 1;
+        translate_matrix[i * 4 + j] = 1;
       else if (j == 3)
-        translate_matrix[i][j] = position->coordinates[i] * k;
+        translate_matrix[i * 4 + j] = position->coordinates[i] * k;
     }
   }
 }
 
-ScreenPoint point_to_screen_point(Point *point, Screen *screen,
-                                  const float render_matrix[4][4]) {
+ScreenPoint point_to_screen_point(Point *point, const Screen *const screen,
+                                  const float *render_matrix) {
   float tmp[] = {point->coordinates[0], point->coordinates[1],
                  point->coordinates[2], 1.0f};
   float point_projection_view[4];

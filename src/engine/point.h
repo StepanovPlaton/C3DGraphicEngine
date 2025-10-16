@@ -10,10 +10,10 @@ typedef struct Point {
 void point_add_point(Point *const point, const Point *const other_point);
 void point_mult_number(Point *const point, const int k);
 void point_transform(Point *const point, int size,
-                     const float translate_matrix[size][size]);
+                     const float *translate_matrix);
 void point_create_translate_matrix(const Point *const position,
-                                   float translate_matrix[4][4], int k);
-ScreenPoint point_to_screen_point(Point *point, Screen *screen,
-                                  const float render_matrix[4][4]);
+                                   float *translate_matrix, int k);
+ScreenPoint point_to_screen_point(Point *point, const Screen *const screen,
+                                  const float *render_matrix);
 
 #endif

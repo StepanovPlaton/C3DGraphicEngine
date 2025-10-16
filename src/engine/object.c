@@ -3,8 +3,7 @@
 #include "../utils/screen.h"
 #include "vector.h"
 
-void object_transform(Object *const object, int size,
-                      float translate_matrix[size][size]) {
+void object_transform(Object *const object, int size, float *translate_matrix) {
   for (int i = 0; i < object->number_of_points; i++) {
     point_transform(&(object->points[i]), size, translate_matrix);
   }
@@ -27,13 +26,13 @@ Point object_get_centroid(const Object *const object) {
   return centroid;
 }
 
-void object_draw(const Object *object, Screen *screen,
-                 const float render_matrix[4][4]) {
+void object_draw(const Object *object, const Screen *const screen,
+                 const float *render_matrix, const Color *const color) {
   for (int i = 0; i < object->number_of_edges; i++) {
     ScreenPoint screen_point1 = point_to_screen_point(
         &object->points[object->edges[i][0]], screen, render_matrix);
     ScreenPoint screen_point2 = point_to_screen_point(
         &object->points[object->edges[i][1]], screen, render_matrix);
-    screen->draw_line(&screen_point1, &screen_point2);
+    screen->draw_line(&screen_point1, &screen_point2, color);
   }
 }

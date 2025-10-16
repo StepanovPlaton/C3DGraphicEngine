@@ -1,0 +1,19 @@
+{
+  "files.associations": {
+    "array": "c",
+    "string_view": "c",
+    "format": "c",
+    "initializer_list": "c",
+    "ranges": "c",
+    "span": "c",
+    "micro.h": "c",
+    "MP6050.C": "cpp",
+    "MPU6050.C": "cpp",
+    "mpu6050.h": "c",
+    "st7789.h": "c",
+    "i2c_unit_conf.h": "c",
+    "mpu6050_conf.h": "c",
+    "i2c_unit.h": "c",
+    "variant": "c"
+  }
+}

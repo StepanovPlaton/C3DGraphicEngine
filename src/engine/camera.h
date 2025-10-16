@@ -13,9 +13,8 @@ typedef struct Camera {
   const float aspect_ratio;
 } Camera;
 
-void camera_get_view_matrix(const Camera *const camera,
-                            float view_matrix[4][4]);
+void camera_get_view_matrix(const Camera *const camera, float *view_matrix);
 void camera_get_projection_matrix(const Camera *const camera,
-                                  float projection_matrix[4][4]);
+                                  float *projection_matrix);
 
 #endif

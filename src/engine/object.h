@@ -14,10 +14,9 @@ typedef struct Object {
   const float (*const rotate_speed)[3];
 } Object;
 
-void object_transform(Object *const object, int size,
-                      float translate_matrix[size][size]);
+void object_transform(Object *const object, int size, float *translate_matrix);
 Point object_get_centroid(const Object *const object);
-void object_draw(const Object *object, Screen *screen,
-                 const float render_matrix[4][4]);
+void object_draw(const Object *object, const Screen *const screen,
+                 const float *render_matrix, const Color *const color);
 
 #endif

@@ -26,7 +26,7 @@ UNIX_SOURCES = $(BASE_SOURCES) platforms/unix.c
 UNIX_OBJECTS = $(UNIX_SOURCES:.c=.uo)
 UNIX_TARGET = $(TARGET)
 
-MICRO_SOURCES = $(BASE_SOURCES) platforms/micro/micro.c platforms/micro/lib/ST7789/ST7789.c
+MICRO_SOURCES = $(BASE_SOURCES) platforms/micro/micro.c platforms/micro/lib/ST7789/ST7789.c platforms/micro/lib/MPU6050/MPU6050.c platforms/micro/lib/I2C/I2C.c
 MICRO_OBJECTS = $(MICRO_SOURCES:.c=.mo)
 MICRO_TARGET = $(TARGET)
 ELF = $(TARGET).elf
@@ -35,7 +35,7 @@ HEX = $(TARGET).hex
 win: $(WIN_TARGET)
 
 $(WIN_TARGET): $(WIN_OBJECTS)
-	$(GCC) -o $@ $^ $(LIBS)
+	$(CC) -o $@ $^ $(LIBS)
 
 micro: $(HEX)
 
@@ -53,7 +53,7 @@ $(ELF): $(MICRO_OBJECTS)
 	$(CC) $(CFLAGS) -DUNIX -c $< -o $@
 
 %.mo: %.c
-	$(MICRO_CC) $(MICRO_CFLAGS) -DMICRO -c $< -o $@ 
+	$(MICRO_CC) $(MICRO_CFLAGS) -DMICRO  -c $< -o $@ 
 
 run_win: $(WIN_TARGET)
 	.\$(WIN_TARGET)

@@ -17,7 +17,7 @@
 
 #ifdef MICRO
 
-#define FPS 5
+#define FPS 25
 #include "micro/micro.h"
 
 #define DISPLAY_WIDTH 160
@@ -28,8 +28,9 @@
 #endif // MICRO
 
 void init_engine();
-void render(Screen screen);
+void render(const Screen *const screen, const Color *const color);
 void tic();
+void rotate(const float angles_speed[3]);
 void destroy();
 
 #endif

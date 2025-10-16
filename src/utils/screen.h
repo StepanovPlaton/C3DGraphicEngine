@@ -1,16 +1,21 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-struct ScreenPoint {
+typedef struct ScreenPoint {
   int coordinates[2];
-};
-typedef struct ScreenPoint ScreenPoint;
+} ScreenPoint;
 
-struct Screen {
+typedef struct Color {
+  char red;
+  char green;
+  char blue;
+} Color;
+
+typedef struct Screen {
   int width;
   int height;
-  void (*draw_line)(const ScreenPoint *sp1, const ScreenPoint *sp2);
-};
-typedef struct Screen Screen;
+  void (*draw_line)(const ScreenPoint *sp1, const ScreenPoint *sp2,
+                    const Color *const color);
+} Screen;
 
 #endif
