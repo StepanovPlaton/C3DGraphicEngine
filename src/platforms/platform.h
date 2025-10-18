@@ -4,6 +4,18 @@
 #include "../utils/screen.h"
 #include "log.h"
 
+#ifdef __cplusplus
+#define EXTERNC extern "C"
+#else
+#define EXTERNC
+#endif
+
+EXTERNC void init_engine();
+EXTERNC void render(const Screen *const screen, const Color *const color);
+EXTERNC void tic();
+EXTERNC void rotate(const float angles_speed[3]);
+EXTERNC void destroy();
+
 #ifdef WIN
 #include "win/win.h"
 
@@ -17,20 +29,14 @@
 
 #ifdef MICRO
 
-#define FPS 25
-#include "micro/micro.h"
-
-#define DISPLAY_WIDTH 160
-#define DISPLAY_HEIGHT 128
+#define FPS 20
+#define DISPLAY_WIDTH 32
+#define DISPLAY_HEIGHT 24
 #define WINDOW_WIDTH DISPLAY_WIDTH
 #define WINDOW_HEIGHT DISPLAY_HEIGHT
 
-#endif // MICRO
+#include "micro/micro.h"
 
-void init_engine();
-void render(const Screen *const screen, const Color *const color);
-void tic();
-void rotate(const float angles_speed[3]);
-void destroy();
+#endif // MICRO
 
 #endif

@@ -1,5 +1,5 @@
-#include "../I2C/I2C.h"
 #include "MPU6050.h"
+#include "../I2C/I2C.h"
 #include <avr/io.h>
 #include <util/delay.h>
 
@@ -76,7 +76,6 @@ void mpu6050_set_gyro_offsets(int16_t x, int16_t y, int16_t z) {
   gyro_offset_y = y;
   gyro_offset_z = z;
 }
-
 void mpu6050_read_gyro(float *gx, float *gy, float *gz) {
   uint8_t buf[6];
   mpu6050_read_burst(MPU6050_REG_GYRO_XOUT_H, buf, 6);

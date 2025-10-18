@@ -8,6 +8,7 @@ typedef struct Point {
 } Point;
 
 void point_add_point(Point *const point, const Point *const other_point);
+void point_substact_point(Point *const point, const Point *const other_point);
 void point_mult_number(Point *const point, const int k);
 void point_transform(Point *const point, int size,
                      const float *translate_matrix);

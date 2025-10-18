@@ -47,7 +47,7 @@ void init_engine() {
 
 void render(const Screen *const screen, const Color *const color) {
   for (int i = 0; i < number_of_objects; i++) {
-    object_draw(&(objects[i]), screen, render_matrix, color);
+    object_draw(&(objects[i]), screen, render_matrix, &camera, color);
   }
 }
 

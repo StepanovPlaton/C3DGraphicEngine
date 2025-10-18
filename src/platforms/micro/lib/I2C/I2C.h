@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #define TWI_FREQ 400000UL // 400 kHz
+// #define TWI_FREQ 100000UL // 400 kHz
 
 void i2c_init(void);
 uint8_t i2c_start(uint8_t address);

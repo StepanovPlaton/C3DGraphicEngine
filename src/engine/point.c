@@ -7,6 +7,10 @@ void point_add_point(Point *const point, const Point *const other_point) {
   for (int i = 0; i < 3; i++)
     point->coordinates[i] += other_point->coordinates[i];
 }
+void point_substact_point(Point *const point, const Point *const other_point) {
+  for (int i = 0; i < 3; i++)
+    point->coordinates[i] -= other_point->coordinates[i];
+}
 
 void point_mult_number(Point *const point, const int k) {
   for (int i = 0; i < 3; i++)
